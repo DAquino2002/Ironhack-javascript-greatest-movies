@@ -47,27 +47,103 @@ function orderAlphabetically(array){
 }
 // Iteration 4: All rates average - Get the average of all rates with 2 decimals
 function ratesAverage(array){
-    let avgList = array.reduce(function(a , b){
+
+    let avgList = array.map(function(rate){
+        return rate.rate;
+    });
+    avgList = avgList.filter(function(element){
+        if(element == ' '){
+            return 0;
+        }
+        else{
+            return element;
+        }
+    });
+    let total = avgList.reduce(function(a , b){
         return a + b;
 
 
     }, 0);
     
-    let avg = avgList / array.length;
+    let length = array.length;
+
+    
+
+    avg = (total/length);
 
     avg = +avg.toFixed(2);
+
     if(array.length == 0){
         return 0;
     }
-    if()
+     
+   
 
-    return avg;
+    return  Number(avg);
     
     
 }
 
 // Iteration 5: Drama movies - Get the average of Drama Movies
 
+function dramaMoviesRate(array){
+
+    let newList = array.filter(function(movies){
+        return movies.genre.includes('Drama');
+    });
+
+
+    
+    let newAvg = ratesAverage(newList);
+
+    return newAvg;
+    
+
+
+
+}
+
 // Iteration 6: Time Format - Turn duration of the movies from hours to minutes
 
+function turnHoursToMinutes(array){
+
+    
+
+    let durationList = array.map( (movie) => {
+        // let newList = movies.duration;
+
+        // newList.slice(1, 1);
+        // newList.slice(newList.length -3, 3);
+
+        // if(newList.length == 2){
+        //     newList.slice(1,1);
+        // }
+        let hour = movie.slice(1, 1)
+         console.log(hour);
+
+        // if(){
+
+        // }
+        // else if(){
+
+        // }
+        // else{
+
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+    return durationList;
+}
 // BONUS Iteration: Best yearly rate average - Best yearly rate average
